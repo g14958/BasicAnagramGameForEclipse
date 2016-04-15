@@ -109,6 +109,8 @@ public class Anagrams extends JFrame {
         guessLabel = new javax.swing.JLabel();
         guessedWord = new javax.swing.JTextField();
         feedbackLabel = new javax.swing.JLabel();
+        teamnameLabel = new javax.swing.JLabel();
+        memberLabel = new javax.swing.JLabel();
         buttonsPanel = new javax.swing.JPanel();
         guessButton = new javax.swing.JButton();
         nextTrial = new javax.swing.JButton();
@@ -176,6 +178,28 @@ public class Anagrams extends JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         mainPanel.add(feedbackLabel, gridBagConstraints);
 
+        teamnameLabel.setText("グループ名：グリーン豆");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
+        mainPanel.add(teamnameLabel, gridBagConstraints);
+        
+        memberLabel.setText("メンバー：元島　吉田　吉澤");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
+        mainPanel.add(memberLabel, gridBagConstraints);
+        
         buttonsPanel.setLayout(new java.awt.GridBagLayout());
 
         guessButton.setMnemonic('G');
@@ -298,6 +322,8 @@ public class Anagrams extends JFrame {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JButton nextTrial;
     private javax.swing.JLabel scrambledLabel;
+    private javax.swing.JLabel teamnameLabel;
+    private javax.swing.JLabel memberLabel;
     private javax.swing.JTextField scrambledWord;
     private javax.swing.JComboBox selectLevel;
     // End of variables declaration//GEN-END:variables
