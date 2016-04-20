@@ -36,55 +36,91 @@ import java.util.*;
  */
 final class StaticWordLibrary extends WordLibrary {
 
-	    private static final String[] WORD_LIST = {
-	        "abstraction",
-	        "ambiguous",
-	        "arithmetic",
-	        "backslash",
-	        "bitmap",
-	        "circumstance",
-	        "combination",
-	        "consequently",
-	        "consortium",
-	        "decrementing",
-	        "dependency",
-	        "disambiguate",
-	        "dynamic",
-	        "encapsulation",
-	        "equivalent",
-	        "expression",
-	        "facilitate",
-	        "fragment",
-	        "hexadecimal",
-	        "implementation",
-	        "indistinguishable",
-	        "inheritance",
-	        "internet",
-	        "beans",
-	        "localization",
-	        "microprocessor",
-	        "navigation",
-	        "optimization",
-	        "parameter",
-	        "patrick",
-	        "pickle",
-	        "polymorphic",
-	        "rigorously",
-	        "simultaneously",
-	        "specification",
-	        "structure",
-	        "lexical",
-	        "likewise",
-	        "management",
-	        "manipulate",
-	        "mathematics",
-	        "hotjava",
-	        "vertex",
-	        "unsigned",
-	        "traditional",
-	        "green"};
+    private static final String[] WORD_LIST = {
+        "abstraction",
+        "ambiguous",
+        "arithmetic",
+        "backslash",
+        "bitmap",
+        "circumstance",
+        "combination",
+        "consequently",
+        "consortium",
+        "decrementing",
+        "dependency",
+        "disambiguate",
+        "dynamic",
+        "encapsulation",
+        "equivalent",
+        "expression",
+        "facilitate",
+        "fragment",
+        "hexadecimal",
+        "implementation",
+        "indistinguishable",
+        "inheritance",
+        "internet",
+        "beans",
+        "localization",
+        "microprocessor",
+        "navigation",
+        "optimization",
+        "parameter",
+        "patrick",
+        "pickle",
+        "polymorphic",
+        "rigorously",
+        "simultaneously",
+        "specification",
+        "structure",
+        "lexical",
+        "likewise",
+        "management",
+        "manipulate",
+        "mathematics",
+        "hotjava",
+        "vertex",
+        "unsigned",
+        "traditional",
+        "green"};  
     
     final static WordLibrary DEFAULT = new StaticWordLibrary();
+    
+    public String shuffleWord(int idx, int level) {
+		String word = WORD_LIST[idx];
+		String[] wordArray = word.split("");
+		int i = wordArray.length - 1;
+		int t = (int) (Math.random() * i); 
+		int r = (int) (Math.random() * i);
+		String tmp1 = wordArray[i];
+		String tmp2 = wordArray[r];
+		String str = "";
+		if (level == 1) {
+			wordArray[i] = wordArray[t];
+			wordArray[t] = tmp1;
+			for (int n = 0; n < wordArray.length; n++) {
+				str += wordArray[n];
+			}
+		} else if (level == 2) {
+			wordArray[i] = wordArray[t];
+			wordArray[t] = tmp1;
+			wordArray[r] = wordArray[t];
+			wordArray[t] = tmp2;
+			for (int a = 0; a < wordArray.length; a++) {
+				str += wordArray[a];
+			}
+		} else {
+			List<String> wordList = new ArrayList<String>();
+			for (int m = 0; m < wordArray.length; m++) {
+				wordList.add(wordArray[m]);
+			}
+			Collections.shuffle(wordList);
+			for (int l = 0; l < wordList.size(); l++) {
+				str += wordList.get(l);
+			}
+		}
+		return str;
+    }
 
     /**
      * Singleton class.
@@ -97,24 +133,8 @@ final class StaticWordLibrary extends WordLibrary {
      * @param idx index of required word
      * @return word at that index in its natural form
      */
-    
-    public String shuffleWord(int idx) {
-    	String word = WORD_LIST[idx];
-    	String[] wordArray = word.split("");
-    	List<String> wordList = new ArrayList<String>();
-    	for(int i = 0; i < wordArray.length; i++) {
-    		wordList.add(wordArray[i]);
-    	}
-    	Collections.shuffle(wordList);
-    	String scrambledWord = "";
-    	for(int i = 0; i< wordList.size(); i++) {
-    		scrambledWord += wordList.get(i);
-    	}
-    	return scrambledWord;
-    }
-    
     public String getWord(int idx) {
-    	return WORD_LIST[idx];
+        return WORD_LIST[idx];
     }
 
     /**
@@ -122,9 +142,10 @@ final class StaticWordLibrary extends WordLibrary {
      * @param idx index of required word
      * @return word at that index in its scrambled form
      */
-    public String getScrambledWord(int idx) {
-        return shuffleWord(idx);
-    }
+    public String getScrambledWord(int idx, int i) {
+		  return shuffleWord(idx, i);
+	}
+
 
     /**
      * Gets the number of words in the library.
@@ -143,5 +164,4 @@ final class StaticWordLibrary extends WordLibrary {
     public boolean isCorrect(int idx, String userGuess) {
         return userGuess.equals(getWord(idx));
     }
-
 }
