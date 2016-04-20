@@ -1,5 +1,4 @@
 /*
-
  * Copyright (c) 2010, Oracle.
  * All rights reserved.
  *
@@ -61,7 +60,7 @@ public abstract class WordLibrary {
      * @param idx index of required word
      * @return word at that index in its scrambled form
      */
-    public abstract String getScrambledWord(int idx);
+    public abstract String getScrambledWord(int idx, int i);
 
     /**
      * Gets the number of words in the library.
@@ -76,4 +75,5 @@ public abstract class WordLibrary {
      * @return true if the guess was correct; false otherwise
      */
     public abstract boolean isCorrect(int idx, String userGuess);
+		
 }
