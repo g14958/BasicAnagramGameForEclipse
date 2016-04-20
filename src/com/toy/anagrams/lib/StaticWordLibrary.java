@@ -30,109 +30,59 @@
 /* Anagram Game Application */
 
 package com.toy.anagrams.lib;
-
+import java.util.*;
 /**
  * Implementation of the logic for the Anagram Game application.
  */
 final class StaticWordLibrary extends WordLibrary {
 
-    private static final String[] WORD_LIST = {
-        "abstraction",
-        "ambiguous",
-        "arithmetic",
-        "backslash",
-        "bitmap",
-        "circumstance",
-        "combination",
-        "consequently",
-        "consortium",
-        "decrementing",
-        "dependency",
-        "disambiguate",
-        "dynamic",
-        "encapsulation",
-        "equivalent",
-        "expression",
-        "facilitate",
-        "fragment",
-        "hexadecimal",
-        "implementation",
-        "indistinguishable",
-        "inheritance",
-        "internet",
-        "beans",
-        "localization",
-        "microprocessor",
-        "navigation",
-        "optimization",
-        "parameter",
-        "patrick",
-        "pickle",
-        "polymorphic",
-        "rigorously",
-        "simultaneously",
-        "specification",
-        "structure",
-        "lexical",
-        "likewise",
-        "management",
-        "manipulate",
-        "mathematics",
-        "hotjava",
-        "vertex",
-        "unsigned",
-        "traditional",
-        "green"};
-
-    private static final String[] SCRAMBLED_WORD_LIST = {
-        "batsartcoin",
-        "maibuguos",
-        "ratimhteci",
-        "abkclssha",
-        "ibmtpa",
-        "iccrmutsnaec",
-        "ocbmnitaoni",
-        "ocsnqeeutnyl",
-        "ocsnroitmu",
-        "edrcmeneitgn",
-        "edepdnneyc",
-        "idasbmgiauet",
-        "ydanicm",
-        "neacsplutaoni",
-        "qeiuaveltn",
-        "xerpseisno",
-        "aficilatet",
-        "rfgaemtn",
-        "ehaxedicalm",
-        "milpmeneatitno",
-        "niidtsniugsiahleb",
-        "niehiratcen",
-        "nietnret",
-        "naebs",
-        "olacilazitno",
-        "imrcpoorecssro",
-        "anivagitno",
-        "poitimazitno",
-        "aparemert",
-        "aprtcki",
-        "ipkcel",
-        "opylomprich",
-        "irogorsuyl",
-        "isumtlnaoesuyl",
-        "psceficitaoni",
-        "tsurtcreu",
-        "elixalc",
-        "ilekiwse",
-        "amanegemtn",
-        "aminupalet",
-        "amhtmetacsi",
-        "ohjtvaa",
-        "evtrxe",
-        "nuisngde",
-        "rtdatioialn",
-        "regne",
-        
-    };
+	    private static final String[] WORD_LIST = {
+	        "abstraction",
+	        "ambiguous",
+	        "arithmetic",
+	        "backslash",
+	        "bitmap",
+	        "circumstance",
+	        "combination",
+	        "consequently",
+	        "consortium",
+	        "decrementing",
+	        "dependency",
+	        "disambiguate",
+	        "dynamic",
+	        "encapsulation",
+	        "equivalent",
+	        "expression",
+	        "facilitate",
+	        "fragment",
+	        "hexadecimal",
+	        "implementation",
+	        "indistinguishable",
+	        "inheritance",
+	        "internet",
+	        "beans",
+	        "localization",
+	        "microprocessor",
+	        "navigation",
+	        "optimization",
+	        "parameter",
+	        "patrick",
+	        "pickle",
+	        "polymorphic",
+	        "rigorously",
+	        "simultaneously",
+	        "specification",
+	        "structure",
+	        "lexical",
+	        "likewise",
+	        "management",
+	        "manipulate",
+	        "mathematics",
+	        "hotjava",
+	        "vertex",
+	        "unsigned",
+	        "traditional",
+	        "green"};
     
     final static WordLibrary DEFAULT = new StaticWordLibrary();
 
@@ -147,8 +97,24 @@ final class StaticWordLibrary extends WordLibrary {
      * @param idx index of required word
      * @return word at that index in its natural form
      */
+    
+    public String shuffleWord(int idx) {
+    	String word = WORD_LIST[idx];
+    	String[] wordArray = word.split("");
+    	List<String> wordList = new ArrayList<String>();
+    	for(int i = 0; i < wordArray.length; i++) {
+    		wordList.add(wordArray[i]);
+    	}
+    	Collections.shuffle(wordList);
+    	String scrambledWord = "";
+    	for(int i = 0; i< wordList.size(); i++) {
+    		scrambledWord += wordList.get(i);
+    	}
+    	return scrambledWord;
+    }
+    
     public String getWord(int idx) {
-        return WORD_LIST[idx];
+    	return WORD_LIST[idx];
     }
 
     /**
@@ -157,7 +123,7 @@ final class StaticWordLibrary extends WordLibrary {
      * @return word at that index in its scrambled form
      */
     public String getScrambledWord(int idx) {
-        return SCRAMBLED_WORD_LIST[idx];
+        return shuffleWord(idx);
     }
 
     /**
