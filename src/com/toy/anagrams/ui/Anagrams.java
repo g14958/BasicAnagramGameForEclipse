@@ -35,7 +35,10 @@ import com.toy.anagrams.lib.WordLibrary;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
+
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 /**
@@ -116,6 +119,7 @@ public class Anagrams extends JFrame {
         nextTrial = new javax.swing.JButton();
         levelLabel = new javax.swing.JLabel();
         selectLevel = new javax.swing.JComboBox();
+        imageLabel = new javax.swing.JLabel();
         mainMenu = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -198,6 +202,18 @@ public class Anagrams extends JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         mainPanel.add(memberLabel, gridBagConstraints);
+        
+        ImageIcon greenbeans1 = new ImageIcon("./src/img/greenbeans1.jpg");
+        imageLabel = new JLabel(greenbeans1);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.BELOW_BASELINE;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
+        mainPanel.add(imageLabel, gridBagConstraints);
         
         buttonsPanel.setLayout(new java.awt.GridBagLayout());
 
@@ -323,6 +339,7 @@ public class Anagrams extends JFrame {
     private javax.swing.JLabel guessLabel;
     private javax.swing.JTextField guessedWord;
     private javax.swing.JLabel levelLabel;
+    private javax.swing.JLabel imageLabel;
     private javax.swing.JMenuBar mainMenu;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JButton nextTrial;
