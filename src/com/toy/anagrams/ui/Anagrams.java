@@ -32,6 +32,8 @@
 package com.toy.anagrams.ui;
 
 import com.toy.anagrams.lib.WordLibrary;
+
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
@@ -181,7 +183,8 @@ public class Anagrams extends JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         mainPanel.add(feedbackLabel, gridBagConstraints);
 
-        teamnameLabel.setText("グループ名：グリーン豆");
+        teamnameLabel.setText("グリーン豆");
+        teamnameLabel.setForeground(Color.GREEN);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -192,7 +195,7 @@ public class Anagrams extends JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         mainPanel.add(teamnameLabel, gridBagConstraints);
         
-        memberLabel.setText("メンバー：元島　吉田　吉澤");
+        memberLabel.setText("元島　吉田　吉澤");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
@@ -298,7 +301,10 @@ public class Anagrams extends JFrame {
     	String str = "";
 
         if (levelData == "Level1") str = wordLibrary.getScrambledWord(wordIdx, 1);
-        else if (levelData == "Level2")  str = wordLibrary.getScrambledWord(wordIdx, 2);
+        else if (levelData == "Level2") {
+        	str = wordLibrary.getScrambledWord(wordIdx, 2);
+        	
+        }
         else  str = wordLibrary.getScrambledWord(wordIdx, 3);
  
         feedbackLabel.setText(" ");

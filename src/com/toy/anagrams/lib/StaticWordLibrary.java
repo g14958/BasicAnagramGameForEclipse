@@ -82,7 +82,13 @@ final class StaticWordLibrary extends WordLibrary {
         "vertex",
         "unsigned",
         "traditional",
-        "green"};  
+        "green",
+        "image",
+        "negative",
+        "positive",
+        "window",
+        "combo"
+        };  
     
     final static WordLibrary DEFAULT = new StaticWordLibrary();
     
