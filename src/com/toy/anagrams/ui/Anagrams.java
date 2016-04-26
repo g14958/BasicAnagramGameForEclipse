@@ -37,6 +37,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -89,6 +90,8 @@ public class Anagrams extends JFrame {
         
         initComponents();
         getRootPane().setDefaultButton(guessButton);
+    	Random rnd = new Random();
+    	wordIdx = rnd.nextInt(wordLibrary.getSize() - 1);
         scrambledWord.setText(wordLibrary.getScrambledWord(wordIdx, 1));
         pack();
         guessedWord.requestFocusInWindow();
@@ -172,7 +175,8 @@ public class Anagrams extends JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
         mainPanel.add(guessedWord, gridBagConstraints);
 
-        feedbackLabel.setText("あああああああああああ");
+        feedbackLabel.setText("やあ！ごきげんよう。");
+        feedbackLabel.setForeground(Color.RED);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -196,6 +200,7 @@ public class Anagrams extends JFrame {
         mainPanel.add(teamnameLabel, gridBagConstraints);
         
         memberLabel.setText("元島　吉田　吉澤");
+        memberLabel.setForeground(Color.BLUE);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
@@ -296,7 +301,8 @@ public class Anagrams extends JFrame {
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     private void nextTrialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextTrialActionPerformed
-    	wordIdx = (wordIdx + 1) % wordLibrary.getSize();
+    	Random rnd = new Random();
+    	wordIdx = rnd.nextInt(wordLibrary.getSize() - 1);
     	String levelData = (String)selectLevel.getSelectedItem();
     	String str = "";
 
